@@ -1,0 +1,1 @@
+// single Socket.IO client instance, imported everywhere

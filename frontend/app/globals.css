@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root[data-theme="dark"] {
+  --ink: #0E1016;
+  --panel: #171A23;
+  --panel-2: #1E212C;
+  --paper: #EDEBE4;
+  --muted: #7B8291;
+  --border: #2A2D3A;
+  --border-strong: #3A3E4E;
+}
+:root[data-theme="light"] {
+  --ink: #FAF9F5;
+  --panel: #FFFFFF;
+  --panel-2: #F2F0E9;
+  --paper: #1A1B20;
+  --muted: #8A8A82;
+  --border: #E6E3D8;
+  --border-strong: #D4D0C0;
+}
+:root {
+  --coral: #FF6B4A;
+  --periwinkle: #8B95FF;
+  --teal: #3DD9B8;
+  --amber: #FFB454;
+  --pink: #F472B6;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'IBM Plex Sans', sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+.font-display { font-family: 'Fraunces', serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* nav */
+.nav-scrolled {
+  background: color-mix(in srgb, var(--ink) 82%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 0.5px solid var(--border);
+}
+.theme-toggle {
+  background: var(--panel); border: 0.5px solid var(--border-strong); border-radius: 999px;
+  width: 50px; height: 27px; position: relative; cursor: pointer; transition: background 0.3s ease;
+}
+.theme-toggle::after {
+  content: ''; position: absolute; top: 3px; left: 3px; width: 19px; height: 19px; border-radius: 50%;
+  background: var(--periwinkle); transition: transform 0.35s cubic-bezier(0.65,0,0.35,1);
+}
+:root[data-theme="light"] .theme-toggle::after { transform: translateX(23px); }
+
+/* hero blobs */
+.blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.35; z-index: 0; animation: drift 16s ease-in-out infinite; }
+.blob-1 { width: 420px; height: 420px; background: var(--coral); top: -120px; left: -80px; }
+.blob-2 { width: 380px; height: 380px; background: var(--periwinkle); top: -60px; right: -100px; animation-delay: -5s; }
+.blob-3 { width: 300px; height: 300px; background: var(--teal); bottom: -140px; left: 30%; animation-delay: -10s; opacity: 0.25; }
+
+h1 em { font-style: italic; background: linear-gradient(90deg, var(--coral), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.btn-primary { background: linear-gradient(135deg, var(--coral), var(--pink)); color: #17101A; transition: transform 0.15s ease, box-shadow 0.25s ease; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px var(--coral); }
+.btn-secondary { transition: background 0.2s ease, border-color 0.2s ease; }
+.btn-secondary:hover { background: var(--panel); border-color: var(--periwinkle); }
+
+.demo-shadow { box-shadow: 0 30px 90px -30px rgba(0,0,0,0.55); }
+
+.typed-cursor { display: inline-block; width: 2px; height: 14px; background: var(--periwinkle); margin-left: 2px; animation: blink 1s step-start infinite; vertical-align: middle; }
+.submit-btn { transition: border-color 0.2s ease; }
+.submit-btn:hover { border-color: var(--teal); }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+.feature-card { position: relative; overflow: hidden; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+.feature-card::before {
+  content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s ease;
+  background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+}
+.feature-card:hover::before { opacity: 1; }
+.feature-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 50px -25px var(--accent); }
+
+.steps-row { position: relative; }
+.steps-row::before {
+  content: ''; position: absolute; top: 20px; left: 12%; right: 12%; height: 1px;
+  background: linear-gradient(90deg, var(--coral), var(--periwinkle), var(--teal), var(--amber));
+  opacity: 0.4;
+}
+
+.cta-banner {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--coral) 22%, var(--panel)), color-mix(in srgb, var(--periwinkle) 22%, var(--panel)));
+}
+
+@media (max-width: 760px) {
+  .steps-row::before { display: none; }
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.75); } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, 20px) scale(1.08); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+}
