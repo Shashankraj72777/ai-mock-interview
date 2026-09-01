@@ -11,6 +11,10 @@ CREATE TABLE IF NOT EXISTS interview_sessions (
   role TEXT NOT NULL,
   status TEXT NOT NULL DEFAULT 'in_progress' CHECK (status IN ('in_progress', 'completed')),
   final_score INTEGER,
+  total_questions INTEGER NOT NULL DEFAULT 5,
+  summary TEXT,
+  strengths TEXT[],
+  improve_areas TEXT[],
   started_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   ended_at TIMESTAMPTZ
 );

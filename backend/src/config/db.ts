@@ -1,4 +1,3 @@
-// Postgres pool connection
 import { Pool } from "pg";
 import dotenv from "dotenv";
 
@@ -11,4 +10,4 @@ export const pool = new Pool({
 pool
   .query("SELECT 1")
   .then(() => console.log("Postgres connected"))
-  .catch((err) => console.error("Postgres connection error:", err.message));
+  .catch((err: any) => console.error("Postgres connection error:", err.message));

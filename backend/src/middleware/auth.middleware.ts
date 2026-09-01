@@ -1,4 +1,3 @@
-// verifies JWT on protected REST routes
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
@@ -16,7 +15,7 @@ export function requireAuth(req: AuthRequest, res: Response, next: NextFunction)
   const token = header.split(" ")[1];
 
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET as string) as {
+    const payload = jwt.verify(token, process.env.JWT_SECRET as string) as unknown as {
       userId: string;
       email: string;
     };
