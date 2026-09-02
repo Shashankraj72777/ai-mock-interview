@@ -3,12 +3,17 @@ import { AuthProvider } from "@/lib/auth-context";
 
 export const metadata = {
   title: "Interview Room — practice technical interviews with AI",
-  description: "Live AI mock interviews with real follow-up questions and instant feedback.",
+  description:
+    "Live AI mock interviews with real follow-up questions and instant feedback.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-theme="dark" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
