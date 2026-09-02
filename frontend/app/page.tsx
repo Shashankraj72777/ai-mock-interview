@@ -373,13 +373,39 @@ export default function Home() {
         </div>
       </section>
 
-      <footer
-        className="flex flex-col md:flex-row justify-between items-center gap-2 px-12 py-7 font-mono text-[11px]"
-        style={{ borderTop: "0.5px solid var(--border)", color: "var(--muted)" }}
-      >
-        <span>interviewroom</span>
-        <span>Built with React, Node, and an AI that actually listens</span>
-        <span>READY</span>
+      <footer style={{ borderTop: "0.5px solid var(--border)" }}>
+        <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col items-center text-center gap-4">
+          <div className="font-display text-lg">
+            interview<span style={{ color: "var(--coral)" }}>room</span>
+          </div>
+          <p className="text-sm max-w-sm" style={{ color: "var(--muted)" }}>
+            Practice out loud, before it counts.
+          </p>
+          <div className="flex items-center gap-2 font-mono text-xs" style={{ color: "var(--muted)" }}>
+            <span>Built by</span>
+            <a
+              href="https://github.com/Shashankraj72777"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium transition-colors"
+              style={{ color: "var(--periwinkle)" }}
+            >
+              Shashank Raj
+            </a>
+          </div>
+        </div>
+
+        <div
+          className="flex flex-col md:flex-row justify-between items-center gap-2 px-6 md:px-12 py-5 font-mono text-[11px]"
+          style={{ borderTop: "0.5px solid var(--border)", color: "var(--muted)" }}
+        >
+          <span>© {new Date().getFullYear()} Shashank Raj. All rights reserved.</span>
+          <span className="hidden md:inline">Built with React, Node, and an AI that actually listens</span>
+          <span className="flex items-center gap-1.5" style={{ color: "var(--teal)" }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--teal)" }} />
+            READY
+          </span>
+        </div>
       </footer>
     </div>
   );
