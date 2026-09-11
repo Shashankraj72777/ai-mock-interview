@@ -90,9 +90,14 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label className="text-xs font-mono mb-1.5 block" style={{ color: "var(--muted)" }}>
-                Password
-              </label>
+              <div className="flex justify-between items-center mb-1.5">
+                <label className="text-xs font-mono" style={{ color: "var(--muted)" }}>
+                  Password
+                </label>
+                <Link href="/forgot-password" className="text-xs font-mono" style={{ color: "var(--periwinkle)" }}>
+                  Forgot password?
+                </Link>
+              </div>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
